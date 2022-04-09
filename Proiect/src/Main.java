@@ -1,3 +1,5 @@
+import Services.*;
+
 import java.util.Scanner;
 
 public class Main {
@@ -10,8 +12,8 @@ public class Main {
         RestaurantService restaurantService = new RestaurantService();
         OrderService orderService = new OrderService();
 
-        restaurantService.CreateRestaurant();
-        restaurantService.CreateRestaurant();
+        restaurantService.createRestaurant();
+        restaurantService.createRestaurant();
 
         Scanner scanner = new Scanner(System.in);
         boolean run = true;
@@ -21,70 +23,70 @@ public class Main {
             option = Options();
             if(option == 1)
             {
-                customerService.CreateCustomer();
+                customerService.createCustomer();
             }
             if(option == 2)
             {
-                courierService.CreateCourier();
+                courierService.createCourier();
             }
             if(option == 3)
             {
-                administratorService.CreateAdministrator();
+                administratorService.createAdministrator();
             }
             if(option == 4)
             {
                 System.out.println("Write the Username of the Customer that wants to order something");
-                administratorService.ShowAllCustomersUsername(customerService);
+                administratorService.showAllCustomersUsername(customerService);
                 String customer = scanner.nextLine();
-                customerService.OrderSomething(orderService, customer, courierService, administratorService, restaurantService);
+                customerService.orderSomething(orderService, customer, courierService, administratorService, restaurantService);
             }
             if(option == 5)
             {
                 System.out.println("Write the Username of the Customer you want to change the password");
-                administratorService.ShowAllCustomersUsername(customerService);
+                administratorService.showAllCustomersUsername(customerService);
                 String customer = scanner.nextLine();
-                customerService.ChangePassword(customerService.getCustomer_list(customer));
+                customerService.changePassword(customerService.getCustomerList(customer));
             }
             if(option == 6)
             {
                 System.out.println("Write the Username of the Customer you want to change the address");
-                administratorService.ShowAllCustomersUsername(customerService);
+                administratorService.showAllCustomersUsername(customerService);
                 String customer = scanner.nextLine();
-                customerService.ChangeAdress(customerService.getCustomer_list(customer));
+                customerService.changeAdress(customerService.getCustomerList(customer));
             }
             if(option == 7)
             {
-                administratorService.ShowAllCustomers(customerService);
+                administratorService.showAllCustomers(customerService);
             }
             if(option == 8)
             {
-                administratorService.ShowAllCouriers(courierService);
+                administratorService.showAllCouriers(courierService);
             }
             if(option == 9)
             {
-                administratorService.ShowAllOrders(orderService);
+                administratorService.showAllOrders(orderService);
             }
             if(option == 10)
             {
-                administratorService.ShowAllRestaurants(restaurantService);
+                administratorService.showAllRestaurants(restaurantService);
             }
             if(option == 11)
             {
                 System.out.println("Write the Username of the Customer you want to delete");
-                administratorService.ShowAllCustomersUsername(customerService);
+                administratorService.showAllCustomersUsername(customerService);
                 String customer = scanner.nextLine();
-                administratorService.DeleteCustomer(customerService, customer);
+                administratorService.deleteCustomer(customerService, customer);
             }
             if(option == 12)
             {
                 System.out.println("Write the Name of the Restaurant you want to delete");
-                administratorService.ShowAllRestaurantsName(restaurantService);
+                administratorService.showAllRestaurantsName(restaurantService);
                 String customer = scanner.nextLine();
-                administratorService.DeleteRestaurant(restaurantService, customer);
+                administratorService.deleteRestaurant(restaurantService, customer);
             }
             if(option == 13)
             {
-                administratorService.AddRestaurant(restaurantService);
+                administratorService.addRestaurant(restaurantService);
             }
             if(option == 100)
                 run=false;
