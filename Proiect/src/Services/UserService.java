@@ -22,6 +22,7 @@ public class UserService
         User user = new User();
         readUser(user);
     }
+
     public boolean readUser(User user)
     {
         Scanner scanner = new Scanner(System.in);
@@ -37,6 +38,8 @@ public class UserService
         userList.put(user.getUsername(), user);
         return true;
     }
+
+
 
 
 }

@@ -1,0 +1,5 @@
+username,password,email,firstName,lastName,road_name,blNr,apNr
+AlexZugravu,1234,AlexZugravu@email.com,Alex,Zugravu,Road1,1,1
+AndreiAlin,968,AndreiAlin@email.com,Andrei,Alin,Road2,2,4
+FlorinMaftei,abc123,FlorinMaftei@email.com,Florin,Maftei,Road3,1,2
+IonutIlie,123456789,IonutIlie@email.com,Ionut,Ilie,Road4,2,10
