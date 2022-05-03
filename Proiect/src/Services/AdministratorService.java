@@ -2,6 +2,7 @@ package Services;
 
 import Classes.*;
 
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -24,11 +25,59 @@ public class AdministratorService extends UserService {
     public void readAdministrator(Administrator administrator) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Firstname: ");
-        administrator.setFirst_name(scanner.nextLine());
+        administrator.setFirstName(scanner.nextLine());
         System.out.println("Lastname: ");
-        administrator.setLast_name(scanner.nextLine());
+        administrator.setLastName(scanner.nextLine());
         administratorList.put(administrator.getUsername(), administrator);
     }
+
+    public void readAdministratorFromFile()
+    {
+        String path = "src/Files/Administrator.csv";
+        String line = "";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(path));
+            line = br.readLine();
+            while((line = br.readLine()) != null){
+                Administrator administrator = new Administrator();
+                String[] values = line.split(",");
+                administrator.setUsername(values[0]);
+                administrator.setPassword(values[1]);
+                administrator.setEmail(values[2]);
+                administrator.setFirstName(values[3]);
+                administrator.setLastName(values[4]);
+                administratorList.put(administrator.getUsername() ,administrator);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeAdministratorInFiles()
+    {
+        String filepath = "src/Files/Administrator.csv";
+        try {
+            FileWriter fw = new FileWriter(filepath, false);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+
+            pw.println("username" + "," + "password" + "," + "email" + "," + "firstName" + "," + "lastName");
+            for (Map.Entry<String, Administrator> entry : administratorList.entrySet()) {
+                pw.println(entry.getValue().getUsername()+","+entry.getValue().getPassword()+","+entry.getValue().getEmail()+","+entry.getValue().getFirstName()+","+entry.getValue().getLastName());
+
+            }
+            pw.flush();
+            pw.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 
     public void changePassword(Administrator administrator) {
         Scanner scanner = new Scanner(System.in);
@@ -41,6 +90,7 @@ public class AdministratorService extends UserService {
         System.out.println("All Customers");
         for (Map.Entry<String, Customer> entry : customerservice.getCustomerList().entrySet()) {
             System.out.println(entry.getValue());
+            System.out.println("\n");
         }
     }
 
@@ -63,6 +113,7 @@ public class AdministratorService extends UserService {
         System.out.println("All Couriers");
         for (Map.Entry<String, Courier> entry : courierservice.getCourierList().entrySet()) {
             System.out.println(entry.getValue());
+            System.out.println("\n");
         }
     }
 
@@ -87,6 +138,7 @@ public class AdministratorService extends UserService {
     public void showAllRestaurants(RestaurantService restaurantservice) {
         for (Map.Entry<String, Restaurant> entry : restaurantservice.getRestaurantList().entrySet()) {
             System.out.println(entry.getValue());
+            System.out.println("\n");
         }
     }
 
