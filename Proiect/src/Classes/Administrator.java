@@ -3,40 +3,40 @@ package Classes;
 
 public class Administrator extends User
 {
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
 
     public Administrator()
     {
-        this.first_name = "";
-        this.last_name = "";
+        this.firstName = "";
+        this.lastName = "";
     }
 
     public Administrator(String UserName, String Password,String Email, String first_name, String last_name)
     {
         super(UserName, Password, Email);
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = first_name;
+        this.lastName = last_name;
     }
 
-    public String getFirst_name()
+    public String getFirstName()
     {
-        return first_name;
+        return firstName;
     }
 
-    public void setFirst_name(String first_name)
+    public void setFirstName(String firstName)
     {
-        this.first_name = first_name;
+        this.firstName = firstName;
     }
 
-    public String getLast_name()
+    public String getLastName()
     {
-        return last_name;
+        return lastName;
     }
 
-    public void setLast_name(String last_name)
+    public void setLastName(String lastName)
     {
-        this.last_name = last_name;
+        this.lastName = lastName;
     }
 
 
